@@ -8,10 +8,7 @@ import java.util.Properties;
 
 import vn.hus.nlp.sd.SentenceDetector;
 import vn.hus.nlp.sd.SentenceDetectorFactory;
-import vn.hus.nlp.tokenizer.TokenizerOptions;
 import vn.hus.nlp.tokenizer.VietTokenizer;
-import vn.hus.nlp.utils.FileIterator;
-import vn.hus.nlp.utils.TextFileFilter;
 
 public class Docs2Words {
 
@@ -50,8 +47,9 @@ public class Docs2Words {
 		tokenizer.turnOffSentenceDetection();
 
 		// get all input files
-		File[] inputFiles = FileIterator.listFiles(inputDirFile,
-				new TextFileFilter(TokenizerOptions.TEXT_FILE_EXTENSION));
+		/*File[] inputFiles = FileIterator.listFiles(inputDirFile,
+				new TextFileFilter(TokenizerOptions.TEXT_FILE_EXTENSION));*/
+		File[] inputFiles = inputDirFile.listFiles();
 		System.out.println("Tokenizing all files in the directory, please wait...");
 		long startTime = System.currentTimeMillis();
 		for (File aFile : inputFiles) {
