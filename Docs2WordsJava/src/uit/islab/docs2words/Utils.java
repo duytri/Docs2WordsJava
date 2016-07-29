@@ -5,14 +5,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
 	public static List<String> removeSignToGetWords(String[] wordsTmpArray) {
 		List<String> result = new ArrayList<String>();
-		String[] specialChars = { " ", ".", ",", "\t", "..." };
-		for (String word : wordsTmpArray) {
-			if (!specialChars.equals(word)) {
+		List<String> specialChars = Arrays.asList(" ", ";", "/", ".", ",", "\"", "\t", "#", "\u00a0", "", "", "[", "]", "(", ")", "!", "?", "'", ":", "&", "=", "-", "<", ">","–", "{", "}", "\\", "...", "*", "+", "$", "@", "\u00a9", "\u00ae", "”", "“", "_");
+		for (String wordTmp : wordsTmpArray) {
+			String word = wordTmp.trim();
+			if (!specialChars.contains(word)) {
 				result.add(word.toLowerCase());
 			}
 		}
